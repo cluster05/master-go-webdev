@@ -15,6 +15,8 @@ func About(rw http.ResponseWriter, r *http.Request) {
 
 func main() {
 
+	// errors.New("error string")
+
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/about", About)
 
