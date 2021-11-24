@@ -1,20 +1,20 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
+	"github.com/gin-gonic/gin"
 )
 
-const PORT string = ":8000"
+const PORT string = ":3000"
 
 func main() {
 
-	http.HandleFunc("/", func(rw http.ResponseWriter, r *http.Request) {
-
+	r := gin.Default()
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "pong",
+		})
 	})
 
-	fmt.Println("Server is runnig on PORT ", PORT)
-	http.ListenAndServe(PORT, nil)
-}
+	r.Run(PORT)
 
-// nodemon --exec go run main.go --signal SIGTERM
+}
